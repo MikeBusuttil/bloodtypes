@@ -1,6 +1,6 @@
 # bloodtypes
 
-Visualization for the prevalance and compatibility of blood types
+Visualization for the prevalence and compatibility of blood types
 
 ## source
 

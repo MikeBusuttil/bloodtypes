@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "bloodtypes"
+version = "0.1.0"
+description = "Visualization for the prevalence and compatibility of blood types"
+authors = ["Mike Busuttil <mikebusuttil@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+plotly = "^5.22.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
