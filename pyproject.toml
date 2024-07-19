@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.11"
 plotly = "^5.22.0"
 
+[tool.poetry.group.dev.dependencies]
+plotly = "^5.22.0"
+dash = "^2.17.1"
 
 [build-system]
 requires = ["poetry-core"]
