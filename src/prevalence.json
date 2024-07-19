@@ -1,10 +1,10 @@
 [
-  { "type": "O+", "prevalence": 39 },
-  { "type": "O-", "value": 7 },
-  { "type": "A+", "value": 36 },
-  { "type": "A-", "value": 6 },
-  { "type": "B-", "value": 1.4 },
-  { "type": "B+", "value": 7.6 },
-  { "type": "AB+", "value": 2.5 },
-  { "type": "AB-", "value": 0.5 }
+  { "type": "O+", "prevalencePercent": 39 },
+  { "type": "O-", "prevalencePercent": 7 },
+  { "type": "A+", "prevalencePercent": 36 },
+  { "type": "A-", "prevalencePercent": 6 },
+  { "type": "B-", "prevalencePercent": 1.4 },
+  { "type": "B+", "prevalencePercent": 7.6 },
+  { "type": "AB+", "prevalencePercent": 2.5 },
+  { "type": "AB-", "prevalencePercent": 0.5 }
 ]
