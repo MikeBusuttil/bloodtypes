@@ -1,18 +1,23 @@
 # TODO
 
 ## MVP
-- show percentage labels:
-  - % of population in center of each item in center color
-  - % of population included & excluded for each side of center
 - pick better colors (with + complimenting -)
 - allow showing just 1 blood type at a time (by clicking a blood type - or selecting from a drop-down)
   - should be easy to navigate back home
+- do all data generation in an intermediate step
 - verify the sizes match prevalence
+- auto-publish with github action
 
 ## use non-plotly tool
 - improve distinguishibility by centering and making adjacent visible links
 - get everything visible at once
 - color the links using gradient from source to sink
 - position labels ([maybe plotly isn't the best tool](https://stackoverflow.com/questions/65012892/how-to-specify-node-label-position-for-sankey-diagram-in-plotly))
+- show percentage labels:
+  - % of population in center of each item in center color
+  - % of population included & excluded for each side of center
 
+- somehow represent how valuable some of the rarer blood types are
+- visualize with a tree/graph to highlight the Interconnectedness (& lack thereof) of some of the types
+- show 200 people icons of different color (blood type) and by clicking on each 1 you see who they can get from & give to
 - source prevalence data for different countries (&/or collections of countries or regions)

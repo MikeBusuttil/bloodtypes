@@ -28,7 +28,7 @@ targets = [8 + t for t in range(8*8)] + [t // 8 for t in range(8*8)]
 link_values =  [prevalence[l//8]["prevalencePercent"] * prevalence[l%8]["prevalencePercent"] / 100 for l in range(8*8)]
 link_values += [prevalence[l//8]["prevalencePercent"] * prevalence[l%8]["prevalencePercent"] / 100 for l in range(8*8)]
 
-node_colors = ['255,0,0', '0,255,0', '0,0,255', '255,255,0', '255,0,255', '0,255,255', '255,255,255', '0,0,0']
+node_colors = ['255,0,0', '0,255,0', '0,0,255', '255,255,0', '255,0,255', '0,255,255', '255,165,0', '128,0,128']
 def node_details(n):
     if n < 8 + 8*8:
         x = n - 8
@@ -39,10 +39,19 @@ def node_details(n):
         target = x // 8
         source = x % 8
     opacity = 1 if n < 8 or target in compatibility[source]['recipients'] else 0
+    pp = 'prevalencePercent'
     return dict(
         color=f'{node_colors[n % 8]},{opacity}',
-        label=prevalence[n % 8]["type"] if opacity else "",
+        label=f'{prevalence[n % 8]["type"]}{ f" ({prevalence[n][pp]}%)" if n < 8 else ""}' if opacity else "",
     )
+def link_label(x):
+    if x < 8*8:
+        source = x // 8
+        takers = sum([prevalence[taker]["prevalencePercent"] for taker in compatibility[source]['recipients']])
+        return f"Can give blood to {takers}% of population<extra>{prevalence[source]['type']}</extra>"
+    target = (x - 8*8) // 8
+    givers = sum([prevalence[giver]["prevalencePercent"] for giver in range(8) if target in compatibility[giver]['recipients']])
+    return f"Can receive blood from {givers}% of population<extra>{prevalence[target]['type']}</extra>"
 def link_color(x):
     if x < 8*8:
         source = x // 8
@@ -77,7 +86,8 @@ def display_sankey(_):
             arrowlen=15,
             source=sources,
             target=targets,
-            hoverinfo='skip',
+            customdata=[link_label(x) for x in range(8*8*2)],
+            hovertemplate='%{customdata}',
             hovercolor=[f'rgba({link_color(x)})' for x in range(8*8*2)],
             color=[f'rgba({link_color(x)})' for x in range(8*8*2)],
             value=link_values,
