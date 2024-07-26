@@ -1,6 +1,6 @@
 import plotly.graph_objects as go
 from dash import Dash, dcc, html, Output, Input
-from build_data import node_labels, node_colors, node_xs, node_ys, sources, targets, link_labels, link_hover_colors, link_colors, link_values
+from data_build import node_labels, node_colors, node_xs, node_ys, sources, targets, link_labels, link_hover_colors, link_colors, link_values
 
 app = Dash(__name__)
 app.title = "Blood Types"

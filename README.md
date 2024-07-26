@@ -6,7 +6,7 @@ Visualization for the prevalence and compatibility of blood types
 
 ```bash
 poetry shell
-python3 src/graph.py
+python3 src/graph_show.py
 ```
 
 ## source
