@@ -4,7 +4,6 @@
 - pick better colors (with + complimenting -)
 - allow showing just 1 blood type at a time (by clicking a blood type - or selecting from a drop-down)
   - should be easy to navigate back home
-- do all data generation in an intermediate step
 - verify the sizes match prevalence
 - auto-publish with github action
 
