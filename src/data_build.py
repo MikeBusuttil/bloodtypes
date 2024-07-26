@@ -53,6 +53,18 @@ def link_color(x):
     source_color = blood_colors[source]
     return f'{target_color if x < 8*8 else source_color},{opacity}'
 
+blood_types = [blood["doner"] for blood in compatibility]
+
+all_node_indicies = set([x for x in range(8 + 8*8 + 8*8)])
+all_link_indicies = set([x for x in range(8*8 + 8*8)])
+def get_indicies(node_type):
+    if node_type == 'all':
+        return all_node_indicies, all_link_indicies
+    node_type = [p["type"] for p in prevalence].index(node_type)
+    node_indicies = set([node_type] + [x for x in range(8 + 8*node_type, 16 + 8*node_type)] + [x for x in range(8 + 8*8 + 8*node_type, 16 + 8*8 + 8*node_type)])
+    link_indicies = set([n for n, src in enumerate(sources) if src==node_type] + [n for n, t in enumerate(targets) if t==node_type])
+    return node_indicies, link_indicies
+
 node_labels = [node_details(x)['label'] for x in range(8 + 8*8 + 8*8)]
 node_colors = [f'rgba({node_details(x)["color"]})' for x in range(8 + 8*8 + 8*8)]
 node_xs = [0.5]*8 + [0.9]*8*8 + [0.1]*8

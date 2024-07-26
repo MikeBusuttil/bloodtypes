@@ -1,6 +1,6 @@
 import plotly.graph_objects as go
 from dash import Dash, dcc, html, Output, Input
-from data_build import node_labels, node_colors, node_xs, node_ys, sources, targets, link_labels, link_hover_colors, link_colors, link_values
+import data_build as data
 
 app = Dash(__name__)
 app.title = "Blood Types"
@@ -9,17 +9,44 @@ app.layout = html.Div([
     dcc.Graph(id="graph"),
 ])
 
+global link_indicies
+global node_indicies_new
+node_indicies_new = data.all_node_indicies
+link_indicies = data.all_link_indicies
+
 @app.callback(
     Output("graph", "figure"),
-    Input("graph", "relayoutData"),
+    Input('graph', 'hoverData'),
 )
-def display_sankey(_):
+def display_sankey(hoverData):
+    global link_indicies
+    global node_indicies_new
+    try:
+        node_type = hoverData['points'][0]['customdata']
+        assert(node_type in data.blood_types + ['all'])
+        node_indicies_new, link_indicies = data.get_indicies(node_type)
+    except:
+        None
+
+    node_labels = data.node_labels
+    node_colors = data.node_colors
+    blood_types = data.blood_types
+    node_xs = [val for i, val in enumerate(data.node_xs) if i in node_indicies_new]
+    node_ys = data.node_ys
+
+    link_sources = [val for i, val in enumerate(data.sources) if i in link_indicies]
+    link_targets = [val for i, val in enumerate(data.targets) if i in link_indicies]
+    link_labels = [val for i, val in enumerate(data.link_labels) if i in link_indicies]
+    link_hover_colors = [val for i, val in enumerate(data.link_hover_colors) if i in link_indicies]
+    link_colors = [val for i, val in enumerate(data.link_colors) if i in link_indicies]
+    link_values = [val for i, val in enumerate(data.link_values) if i in link_indicies]
     fig = go.Figure(go.Sankey(
         arrangement='snap',
         node=dict(
             label=node_labels,
-            hoverinfo='skip',
+            hoverinfo='none',
             color=node_colors,
+            customdata=blood_types + ['all']*8*8*2,
             align='right',
             x=node_xs,
             y=node_ys,
@@ -29,8 +56,8 @@ def display_sankey(_):
         ),
         link=dict(
             arrowlen=15,
-            source=sources,
-            target=targets,
+            source=link_sources,
+            target=link_targets,
             customdata=link_labels,
             hovertemplate='%{customdata}',
             hovercolor=link_hover_colors,
