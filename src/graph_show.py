@@ -1,5 +1,5 @@
 import plotly.graph_objects as go
-from dash import Dash, dcc, html, Output, Input
+from dash import Dash, dcc, html, Output, Input, clientside_callback, ClientsideFunction
 import data_build as data
 
 app = Dash(__name__)
@@ -11,17 +11,14 @@ app.layout = html.Div([
     dcc.Store(id='highlighted-type'),
 ])
 
-@app.callback(
+clientside_callback(
+    ClientsideFunction(
+        namespace='clientside',
+        function_name='large_params_function'
+    ),
     Output("highlighted-type", "data"),
     [Input('graph', 'hoverData'), Input('highlighted-type', 'data')],
 )
-def handle_hover(hoverData, previously_selected_type):
-    try:
-        node_type = hoverData['points'][0]['customdata']
-        assert(node_type in data.blood_types + ['all'])
-        return node_type
-    except:
-        return previously_selected_type
 
 @app.callback(
     Output(component_id='title', component_property='children'),
