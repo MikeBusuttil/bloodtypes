@@ -9,6 +9,10 @@
 - allow showing just 1 blood type at a time by selecting from a drop-down
   - should play nicely with the hover selectability
 - move all logic from Python to JS in order to serve statically
+- automatically redeploy on `main` branch change:
+  - listen to unique post requests from github
+  - fire post request from Github on merge to main
+  - on post, trigger a redeploy
 
 ## use non-plotly tool
 - improve distinguishibility by centering and making adjacent visible links
