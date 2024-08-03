@@ -5,28 +5,38 @@ import data_build as data
 app = Dash(__name__)
 app.title = "Blood Type Compatibility"
 app.layout = html.Div([
-    html.H4(app.title),
+    html.H4(id="title"),
     dcc.Graph(id="graph"),
+
+    dcc.Store(id='highlighted-type'),
 ])
 
-global link_indicies
-global node_indicies_new
-node_indicies_new = data.all_node_indicies
-link_indicies = data.all_link_indicies
-
 @app.callback(
-    Output("graph", "figure"),
-    Input('graph', 'hoverData'),
+    Output("highlighted-type", "data"),
+    [Input('graph', 'hoverData'), Input('highlighted-type', 'data')],
 )
-def display_sankey(hoverData):
-    global link_indicies
-    global node_indicies_new
+def handle_hover(hoverData, previously_selected_type):
     try:
         node_type = hoverData['points'][0]['customdata']
         assert(node_type in data.blood_types + ['all'])
-        node_indicies_new, link_indicies = data.get_indicies(node_type)
+        return node_type
     except:
-        None
+        return previously_selected_type
+
+@app.callback(
+    Output(component_id='title', component_property='children'),
+    Input(component_id='highlighted-type', component_property='data')
+)
+def update_output_div(selected_type):
+    selected_type
+    return app.title if selected_type in ['all', None] else f'{app.title} ({selected_type})'
+
+@app.callback(
+    Output("graph", "figure"),
+    Input(component_id='highlighted-type', component_property='data')
+)
+def display_sankey(selected_type):
+    node_indicies_new, link_indicies = data.get_indicies(selected_type)
 
     node_labels = data.node_labels
     node_colors = data.node_colors

@@ -2,12 +2,14 @@
 
 ## MVP
 - verify the sizes match prevalence
-- manage state without global variables: https://dash.plotly.com/sharing-data-between-callbacks
 - auto-publish with github action
 - pick better colors (with + complimenting -)
 
 ### extras
 
+- don't transfer data with every hover change (only the ones that matter)
+  - egress bandwidth is gonna be nuts
+  - instead use client-side callbacks: https://dash.plotly.com/clientside-callbacks
 - allow showing just 1 blood type at a time by selecting from a drop-down
   - should play nicely with the hover selectability
 

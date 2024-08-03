@@ -59,7 +59,7 @@ blood_types = [blood["type"] for blood in blood_data]
 all_node_indicies = set([x for x in range(8 + 8*8 + 8*8)])
 all_link_indicies = set([x for x in range(8*8 + 8*8)])
 def get_indicies(node_type):
-    if node_type == 'all':
+    if node_type in ['all', None]:
         return all_node_indicies, all_link_indicies
     node_type = [p["type"] for p in blood_data].index(node_type)
     node_indicies = set([node_type] + [x for x in range(8 + 8*node_type, 16 + 8*node_type)] + [x for x in range(8 + 8*8 + 8*node_type, 16 + 8*8 + 8*node_type)])
