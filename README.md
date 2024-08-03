@@ -1,4 +1,4 @@
-# bloodtypes
+# Blood Type Compatibility
 
 Visualization for the prevalence and compatibility of blood types.
 
