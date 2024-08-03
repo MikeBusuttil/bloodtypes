@@ -2,6 +2,7 @@
 
 Visualization for the prevalence and compatibility of blood types.
 
+[![Blood Type Compatibility](plot.png "Blood Type Compatibility")](https://btc.busuttil.ca)
 Currently hosted at https://btc.busuttil.ca
 
 ## quick start
