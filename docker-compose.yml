@@ -13,6 +13,6 @@ services:
     restart: always
     environment:
       VIRTUAL_HOST: btc.busuttil.ca
-      LESTENCRYPT_HOST: btc.busuttil.ca
+      LETSENCRYPT_HOST: btc.busuttil.ca
     network_mode: bridge
     
