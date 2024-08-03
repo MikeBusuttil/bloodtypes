@@ -4,4 +4,4 @@
 #
 PATH=/usr/bin
 HOME=/root/bloodtypes
-* * * * * root git fetch && git pull
+* * * * * root git pull
