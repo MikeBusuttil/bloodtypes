@@ -1,0 +1,18 @@
+services:
+  blood_type_compatibility:
+    container_name: blood_type_compatibility
+    build: 
+      dockerfile_inline: |
+        FROM python:alpine
+        RUN pip3 install gunicorn dash plotly
+        RUN mkdir /src
+        WORKDIR /src
+    volumes:
+      - ./src:/src
+    entrypoint: gunicorn graph_show:server -w 2 --threads 2 -b 0.0.0.0:80
+    restart: always
+    environment:
+      VIRTUAL_HOST: btc.busuttil.ca
+      LESTENCRYPT_HOST: btc.busuttil.ca
+    network_mode: bridge
+    

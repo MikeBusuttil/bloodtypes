@@ -1,0 +1,7 @@
+# polls for repo changes every minute
+#
+# This file was installed by the 'tech_backupdate' package.
+#
+PATH=/usr/bin
+HOME=/root/bloodtypes
+* * * * * root git fetch

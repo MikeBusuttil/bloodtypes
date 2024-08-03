@@ -1,7 +1,6 @@
 # TODO
 
 ## MVP
-- auto-publish with github action:
 - verify the sizes match prevalence
 - pick better colors (with + complimenting -)
 
@@ -9,7 +8,7 @@
 
 - allow showing just 1 blood type at a time by selecting from a drop-down
   - should play nicely with the hover selectability
-- move all logic from Python to JS in order to serve locally
+- move all logic from Python to JS in order to serve statically
 
 ## use non-plotly tool
 - improve distinguishibility by centering and making adjacent visible links
