@@ -1,0 +1,10 @@
+[
+  { "type": "O+", "prevalencePercent": 39, "canGiveTo": ["AB+", "A+", "B+"] },
+  { "type": "O-", "prevalencePercent": 7, "canGiveTo": ["AB+", "AB-", "O+", "A+", "A-", "B+", "B-"] },
+  { "type": "A+", "prevalencePercent": 36, "canGiveTo": ["AB+"] },
+  { "type": "A-", "prevalencePercent": 6, "canGiveTo": ["AB+", "AB-", "A+"] },
+  { "type": "B+", "prevalencePercent": 7.6, "canGiveTo": ["AB+"] },
+  { "type": "B-", "prevalencePercent": 1.4, "canGiveTo": ["AB+", "AB-", "B+"] },
+  { "type": "AB+", "prevalencePercent": 2.5, "canGiveTo": [] },
+  { "type": "AB-", "prevalencePercent": 0.5, "canGiveTo": ["AB+"] }
+]

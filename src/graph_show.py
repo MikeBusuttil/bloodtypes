@@ -3,7 +3,7 @@ from dash import Dash, dcc, html, Output, Input
 import data_build as data
 
 app = Dash(__name__)
-app.title = "Blood Types"
+app.title = "Blood Type Compatibility"
 app.layout = html.Div([
     html.H4(app.title),
     dcc.Graph(id="graph"),

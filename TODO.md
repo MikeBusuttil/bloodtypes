@@ -5,7 +5,6 @@
 - manage state without global variables: https://dash.plotly.com/sharing-data-between-callbacks
 - auto-publish with github action
 - pick better colors (with + complimenting -)
-- combine compatibility & prevalence data into 1 file
 
 ### extras
 
